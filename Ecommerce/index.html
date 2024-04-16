@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>Fake Store</title>
+  </head>
+  <body>
+    <nav>
+      <div class="wrapper">
+        <div class="logo"><a href="#">Logo</a></div>
+        <input type="radio" name="slider" id="menu-btn" />
+        <input type="radio" name="slider" id="close-btn" />
+        <ul class="nav-links">
+          <label for="close-btn" class="btn close-btn"
+            ><i class="fas fa-times"></i
+          ></label>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li>
+            <a href="#" class="desktop-item">Products</a>
+            <input type="checkbox" id="showMega" />
+            <label for="showMega" class="mobile-item">Products</label>
+            <div class="mega-box">
+              <div class="content">
+                <div class="row">
+                  <img src="img/menu.png" alt="" />
+                </div>
+                <div class="row">
+                  <header>Woman</header>
+                  <ul class="mega-links">
+                    <li><a href="#">T-shirt</a></li>
+                    <li><a href="#">Pants</a></li>
+                    <li><a href="#">jewlery</a></li>
+                    <li><a href="#">Shoes</a></li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <header>Man</header>
+                  <ul class="mega-links">
+                    <li><a href="#">T-shirt</a></li>
+                    <li><a href="#">Pants</a></li>
+                    <li><a href="#">jewlery</a></li>
+                    <li><a href="#">Shoes</a></li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <header>Tech</header>
+                  <ul class="mega-links">
+                    <li><a href="#">Cellphone</a></li>
+                    <li><a href="#">Computer</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Appliance</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li><a href="#">Contact us</a></li>
+          <li>
+            <a href="#"><i class="bi bi-bookmark"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="bi bi-cart3"></i></a>
+          </li>
+        </ul>
+        <label for="menu-btn" class="btn menu-btn"
+          ><i class="fas fa-bars"></i
+        ></label>
+      </div>
+    </nav>
+    <div class="main">
+      <h1>NEW COLLECTION</h1>
+      <button>SHOP NOW</button>
+    </div>
+    <article>
+      <h2>Discover our latest arrivals</h2>
+      <div class="container-categorie">
+        <a href="#">
+          <div class="categoria-prodotto">
+            <div class="container-foto">
+              <img src="img/categoria-donna.jpg" alt="women" />
+            </div>
+            <h3>WOMAN</h3>
+          </div>
+        </a>
+        <a href="#">
+          <div class="categoria-prodotto">
+            <div class="container-foto">
+              <img src="img/categoria-uomo.jpg" alt="men" />
+            </div>
+            <h3>MAN</h3>
+          </div>
+        </a>
+        <a href="#">
+          <div class="categoria-prodotto">
+            <div class="container-foto">
+              <img src="img/categoria-gioielli.jpg" alt="jewlery" />
+            </div>
+            <h3>JEWELRY</h3>
+          </div>
+        </a>
+        <a href="#">
+          <div class="categoria-prodotto">
+            <div class="container-foto">
+              <img src="img/categoria-tech.jpeg" alt="tech" />
+            </div>
+            <h3>TECH</h3>
+          </div>
+        </a>
+      </div>
+      <h2>Products</h2>
+      <div class="container-prodotti"></div>
+
+      <section class="banner">
+        <h4>April Discounts</h4>
+        <h3>Save up to <span>70% Off</span> - All t-shirts & Accessories</h3>
+        <button>Save now</button>
+      </section>
+
+      <section class="container-form">
+        <form method="POST" id="contact-form">
+          <span>CONTACT US</span>
+          <h3>We'd love to hear from you</h3>
+          <input name="name" type="text" placeholder="Your Name" required />
+          <input name="email" type="email" placeholder="Your Email" required />
+          <input name="subject" type="text" placeholder="Subject" required />
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <div id="conferma" style="display: none">
+            <p></p>
+          </div>
+          <div class="submit-button">
+            <button class="sub-button" type="submit">Send your message</button>
+            <img class="img-form" style="display: none" src="img/Spinner@1x-1.0s-200px-200px.gif" alt="loading" />
+          </div>
+        </form>
+      </section>
+    </article>
+    <script src="script.js"></script>
+  </body>
+</html>
