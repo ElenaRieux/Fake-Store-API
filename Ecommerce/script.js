@@ -8,10 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.log(error));
   }
 
+  
   function construisciLista(data) {
     const productList = document.querySelector(".container-prodotti");
-
-    data.forEach((product) => {
+    
+    const firstFiveProducts = data.slice(0, 9);
+    firstFiveProducts.forEach((product) => {
       const divProdotti = document.createElement("div");
       divProdotti.classList.add("prodotti");
 
@@ -76,3 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch((error) => console.error("Error:", error));
     });
 });
+
+function toggleSection(element) {
+  console.log("Toggle section function called!");
+  var ulElement = element.querySelector('ul');
+  var iElement = element.querySelector("i")
+  console.log(ulElement)
+  console.log(iElement)
+  iElement.classList.toggle('rotate')
+  ulElement.classList.toggle('open');
+}
