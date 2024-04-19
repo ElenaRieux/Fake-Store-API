@@ -80,11 +80,26 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function toggleSection(element) {
-  console.log("Toggle section function called!");
   var ulElement = element.querySelector('ul');
-  var iElement = element.querySelector("i")
-  console.log(ulElement)
-  console.log(iElement)
-  iElement.classList.toggle('rotate')
+  var iElement = element.querySelector("i");
+  iElement.classList.toggle('rotate');
   ulElement.classList.toggle('open');
+}
+
+function displayBarraLaterale(){
+  var formLaterale = document.querySelector('.form-laterale');
+  formLaterale.style.visibility = 'visible';
+  formLaterale.style.display = 'block';
+  setTimeout(function() {
+    document.querySelector('.form-laterale').classList.add('open');
+  }, 10);}
+
+function closeBarraLaterale(){
+  var formLaterale = document.querySelector('.form-laterale');
+
+  document.querySelector('.form-laterale').classList.remove('open');
+  setTimeout(function() {
+    formLaterale.style.visibility = 'hidden';
+    formLaterale.style.display = 'none';
+  }, 200);
 }

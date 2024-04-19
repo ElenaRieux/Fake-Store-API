@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+
+.selezione-login{
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.selezione-login button{
+  margin: 20px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+}
+
+.selezione-login button.active{
+  border-bottom: 2px solid #333;
+}
+
+.form-login h2 {
+  font-weight: bold;
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+
+
+.form-login form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-login a{
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+
+
+.form-login {
+  background-color: #ffffff; 
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+  padding-bottom: 40px;
+
+}
+
+.form-login input {
+  background-color: #eee;
+  border: none;
+  padding: 8px 12px;
+  margin: 8px 0;
+  width: 40%;
+  font-size: 14px;
+  min-width: 170px;
+  max-width: 300px;
+}
+
+.form-login span {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.social-container {
+  margin: 16px 0;
+  display: inline;
+}
+
+.fb:hover {
+  color: rgb(42, 44, 161);
+}
+.google:hover {
+  color: rgb(212, 46, 24);
+}
+.linkedin:hover {
+  color: rgb(49, 51, 209);
+}
+
+.social-container a {
+  color: #333;
+  padding: 10px;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 20px 0;
+}
+
+.piu-margine{
+  margin-top: 30px;
+}
+
+.form-login button {
+  padding: 6px 35px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1e1e1f;
+  color: white;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.sign-up-container, .sign-in-container{
+  display: none;
+}
+.sign-up-container.open, .sign-in-container.open{
+  display: flex;
+}
