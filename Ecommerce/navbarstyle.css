@@ -2,9 +2,9 @@ nav {
   position: fixed;
   z-index: 99;
   width: 100%;
-
   background: #242526;
 }
+
 nav .wrapper {
   position: relative;
   max-width: 1300px;
@@ -16,16 +16,20 @@ nav .wrapper {
   align-items: center;
   justify-content: space-between;
 }
+
 .wrapper img,
 .logo {
   height: 80px;
 }
+
 .wrapper .nav-links {
   display: inline-flex;
 }
+
 .nav-links li {
   list-style: none;
 }
+
 .nav-links li a {
   color: #f2f2f2;
   text-decoration: none;
@@ -35,6 +39,7 @@ nav .wrapper {
   border-radius: 5px;
   transition: all 0.3s ease;
 }
+
 .nav-links li a:hover {
   color: #d6a230;
 }

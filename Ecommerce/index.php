@@ -14,7 +14,7 @@
 
 <body>
   <?php
-  require_once("navbar.html");
+  require_once("navbar.php");
   ?>
   <div class="main">
     <h1>NEW COLLECTION</h1>

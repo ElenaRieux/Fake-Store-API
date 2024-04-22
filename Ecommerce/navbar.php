@@ -1,3 +1,6 @@
+<?php
+require_once("include/config_session.php");
+?>
 <nav>
   <div class="wrapper">
     <a class="logo" href="index.php"
@@ -51,7 +54,7 @@
         </div>
       </li>
       <li class="menu-cell">
-        <a href="#"><i class="bi bi-person"></i></a>
+        <a href="login.php"><i class="bi bi-person"></i></a>
       </li>
       <li class="menu-cell">
         <a href="#"><i class="bi bi-bookmark"></i></a>
@@ -66,9 +69,20 @@
           <a><i class="desktop-item bi bi-person"></i></a>
           <input type="checkbox" id="showDrop" />
           <ul class="drop-menu">
-            <li>Access your account</li>
             <li>
-              <button onclick="displayBarraLaterale()">Log in / Sign up</button>
+              <?php
+              if(isset ($_SESSION["logged_in"])){
+                echo '
+                <li>You are logged in as '. $_SESSION["user_username"].'</li>
+                <form action="include/logout.php" method="post">
+                <button>Log Out</button>
+              </form>';?>
+<?php
+              } else {
+                echo '<li>Access your account</li> <button onclick="displayBarraLaterale()">Log in / Sign up</button>';
+              }
+              ?>
+              
             </li>
           </ul>
         </li>
@@ -86,7 +100,7 @@
   </div>
 </nav>
 <div class="form-laterale sign-in-container">
-  <form action="#">
+  <form action="include/login_check.php" method="post">
     <i class="fas fa-times" onclick="closeBarraLaterale()"></i>
     <h2>Log in</h2>
     <div class="social-container">
@@ -99,8 +113,8 @@
       ></a>
     </div>
     <span>or use your account</span>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
+    <input name="email" type="email" placeholder="Email" />
+    <input name="password" type="password" placeholder="Password" />
     <a href="#">Forgot your password?</a>
     <button>Log In</button>
   </form>

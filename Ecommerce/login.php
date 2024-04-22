@@ -1,3 +1,9 @@
+<?php
+require_once "include/signup_view.php";
+require_once "include/config_session.php";
+require_once "include/login_view.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,27 +21,50 @@
 
 <body>
   <?php
-  require_once("navbar.html");
+  require_once("navbar.php");
   ?>
-  <div class="selezione-login"><button class="button-login" onclick="chooseLog('login')">LOG IN</button><button class="button-signup active" onclick="chooseLog('signup')">SIGN UP</button></div>
-  <div class="form-login sign-in-container">
-    <form action="#">
+  <div class="selezione-login"><button class="button-login <?php
+    if (isset($_GET["login"]) && $_GET["login"] === "fail") {
+      echo 'active';
+    }
+    ?>" onclick="chooseLog('login')">LOG IN</button>
+    
+    <button class="button-signup <?php
+   if ( !isset($_GET["login"]) || $_GET["login"] !== "fail") {
+    echo 'active';
+    }
+    ?>" onclick="chooseLog('signup')">SIGN UP</button></div>
+  <div class="form-login sign-in-container <?php
+    if (isset($_GET["login"]) && $_GET["login"] === "fail") {
+      echo 'open';
+    }
+    ?>">
+    <form action="include/login_check.php" method="post">
       <h2>Log in</h2>
-      <div class="social-container">
+      <div class="social-container" method="post">
         <a href="#" class="social-nav fb"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-nav google"><i class="fab fa-google-plus-g"></i></a>
         <a href="#" class="social-nav linkedin"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span>or use your account</span>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
+      <input type="email" name="email" placeholder="Email" />
+      <input type="password" name="password" placeholder="Password" />
+      <?php
+      check_login_errors();
+      ?>
       <a href="#">Forgot your password?</a>
       <button>Log In</button>
     </form>
   </div>
 
-  <div class="form-login sign-up-container open">
-    <form action="#">
+  <div class="form-login sign-up-container
+   <?php
+    if ( !isset($_GET["login"]) || $_GET["login"] !== "fail") {
+      echo 'open';
+    }
+    ?>
+    ">
+    <form action="include/signup_check.php" method="post">
       <h2>Create Account</h2>
       <div class="social-container">
         <a href="#" class="social-nav fb"><i class="fab fa-facebook-f"></i></a>
@@ -43,16 +72,21 @@
         <a href="#" class="social-nav linkedin"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span>or use your account</span>
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Repeat Password" />
-      <button class="piu-margine">Sign Up</button>
+
+      <?php
+      signup_inputs();
+      ?>
+
+      <?php
+      check_signup_errors();
+      ?>
+      <button class="btn_signup">Sign Up</button>
     </form>
   </div>
-<?php
-require_once("footer.html");
-?>
+  <?php
+  require_once("footer.html");
+  ?>
   <script src="script-log.js"></script>
 </body>
+
 </html>
