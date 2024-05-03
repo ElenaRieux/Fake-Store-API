@@ -111,13 +111,13 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                                                     </button>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-info btn-icon-split">
+                                                    <button href="#" class="btn btn-info btn-icon-split edit-button" data-toggle="modal" data-target="#updateUserModal">
                                                         <span class="icon text-white-50">
                                                             <i class="fa fa-address-book" aria-hidden="true"></i>
                                                         </span>
                                                         <span class="text">Edit</span>
                                                     </a>
-                                                </td>"
+                                                </td>
                                                 <td>
                                                     <a href="#" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
@@ -221,6 +221,48 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="updateUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change user's credentials</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Change the data you want to update.</div>
+                    <form id="formNewUser" class="mx-4 pb-4">
+                        <div class="form-group">
+                            <label for="editUsername">Username</label>
+                            <input name="username" type="text" class="form-control" id="editUsername" placeholder="new username">
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">Email address</label>
+                            <input name="email" type="email" class="form-control" id="editEmail" placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input name="password" type="password" class="form-control" id="password" placeholder="insert password">
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordRepeat">Repeat password</label>
+                            <input name="passwordRepeat" type="password" class="form-control" id="passwordRepeat" placeholder="insert password">
+                        </div>
+                        <div class="form-group">
+                            <label for="editRole">Role</label>
+                            <select name="role" class="form-control" id="editRole">
+                                <option>user</option>
+                                <option>admin</option>
+                            </select>
+                        </div>
+                        <div id="risultatoEditUser"></div>
+                        <button type="submit" class="btn btn-primary add-user float-right">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

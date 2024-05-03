@@ -42,4 +42,19 @@ $(document).ready(function () {
         })
         .catch((error) => console.error("Error:", error));
     });
+
+    function setEditFormData(username, email, role) {
+        document.getElementById('editUsername').value = username;
+        document.getElementById('editEmail').value = email;
+        document.getElementById('editRole').value = role;
+    }
+    
+    $(".edit-button").click(function() {
+        var row = $(this).closest("tr");
+        var username = row.find("td:eq(0)").text(); 
+        var email = row.find("td:eq(1)").text(); 
+        var role = row.find("td:eq(2)").text();
+    
+        setEditFormData(username, email, role);
+    });
 });
