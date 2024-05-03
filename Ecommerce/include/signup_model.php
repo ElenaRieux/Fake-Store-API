@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-function get_username(object $connessioneDB, string $email)
+function get_email(object $connessioneDB, string $email)
 {
     $query = "SELECT email FROM utente WHERE email = :email;";
     $stmt = $connessioneDB->prepare($query);
@@ -13,7 +13,7 @@ function get_username(object $connessioneDB, string $email)
     return $result;
 }
 
-function set_user(object $connessioneDB, string $username, string $email, string $password)
+function insert_user(object $connessioneDB, string $username, string $email, string $password)
 {
     $query = "INSERT INTO utente (username, email, password) VALUES (:username,:email,:password);";
     $stmt = $connessioneDB->prepare($query);

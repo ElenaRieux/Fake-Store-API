@@ -1,7 +1,6 @@
 <?php
 require_once "include/signup_view.php";
 require_once "include/config_session.php";
-require_once "include/login_view.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,25 +20,16 @@ require_once "include/login_view.php";
 
 <body>
   <?php
+  require_once("include/config_session.php");
+  require_once("models/Role.models.php");
+  require_once("models/User.models.php");
   require_once("navbar.php");
   ?>
-  <div class="selezione-login"><button class="button-login <?php
-    if (isset($_GET["login"]) && $_GET["login"] === "fail") {
-      echo 'active';
-    }
-    ?>" onclick="chooseLog('login')">LOG IN</button>
+  <div class="selezione-login"><button class="button-login" onclick="chooseLog('login')">LOG IN</button>
     
-    <button class="button-signup <?php
-   if ( !isset($_GET["login"]) || $_GET["login"] !== "fail") {
-    echo 'active';
-    }
-    ?>" onclick="chooseLog('signup')">SIGN UP</button></div>
-  <div class="form-login sign-in-container <?php
-    if (isset($_GET["login"]) && $_GET["login"] === "fail") {
-      echo 'open';
-    }
-    ?>">
-    <form action="include/login_check.php" method="post">
+    <button class="button-signup active" onclick="chooseLog('signup')">SIGN UP</button></div>
+  <div class="form-login sign-in-container">
+    <form id="login-form" method="post">
       <h2>Log in</h2>
       <div class="social-container" method="post">
         <a href="#" class="social-nav fb"><i class="fab fa-facebook-f"></i></a>
@@ -48,23 +38,17 @@ require_once "include/login_view.php";
       </div>
       <span>or use your account</span>
       <input type="email" name="email" placeholder="Email" />
+      <div class="error"></div>
       <input type="password" name="password" placeholder="Password" />
-      <?php
-      check_login_errors();
-      ?>
+      <div class="error"></div>
+      <p id="risultatoLogin"></p>
       <a href="#">Forgot your password?</a>
-      <button>Log In</button>
+      <button name="submit" type="submit">Log In</button>
     </form>
   </div>
 
-  <div class="form-login sign-up-container
-   <?php
-    if ( !isset($_GET["login"]) || $_GET["login"] !== "fail") {
-      echo 'open';
-    }
-    ?>
-    ">
-    <form action="include/signup_check.php" method="post">
+  <div class="form-login sign-up-container open">
+    <form id="signup-form" method="post">
       <h2>Create Account</h2>
       <div class="social-container">
         <a href="#" class="social-nav fb"><i class="fab fa-facebook-f"></i></a>
@@ -72,15 +56,24 @@ require_once "include/login_view.php";
         <a href="#" class="social-nav linkedin"><i class="fab fa-linkedin-in"></i></a>
       </div>
       <span>or use your account</span>
-
-      <?php
-      signup_inputs();
-      ?>
-
-      <?php
-      check_signup_errors();
-      ?>
-      <button class="btn_signup">Sign Up</button>
+      <div class="input-control">
+      <input type="text" id="signup-username" name="username" placeholder="Name"/>
+      <div class="error"></div>
+      </div>
+      <div class="input-control">
+      <input type="text" id="signup-email" name="email" placeholder="Email"/>
+      <div class="error"></div>
+      </div>
+      <div class="input-control">
+      <input type="password" id="signup-password" name="password" placeholder="Password"/>
+      <div class="error"></div>
+      </div>
+      <div class="input-control">
+      <input type="password" id="signup-passwordRepeat" name="passwordRepeat" placeholder="Repeat Password" />
+      <div class="error"></div>
+      </div>
+      <p id="risultatoSignup"></p>
+      <button name="submit" type="submit" class="btn_signup">Sign Up</button>
     </form>
   </div>
   <?php

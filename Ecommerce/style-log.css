@@ -70,6 +70,7 @@
   max-width: 300px;
 }
 
+
 .form-login span {
   font-size: 13px;
   margin-bottom: 10px;
@@ -117,4 +118,14 @@
 }
 .sign-up-container.open, .sign-in-container.open{
   display: flex;
+}
+
+.form-login input.error{
+  border: 1px solid rgb(216, 14, 14);
+}
+
+.form-login div.error{
+  color: rgb(216, 14, 14);
+  font-size: 9px;
+  height: 10px;
 }

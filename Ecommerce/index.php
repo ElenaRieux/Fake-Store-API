@@ -10,10 +10,16 @@
   <title>Fake Store | Get Now Tech, Jewelry and Clothings</title>
   <meta name="description" content="Explore Trendy Clothes for women and men, Stunning Jewelry, and Cutting-Edge Tech Gadgets.
       Elevate Your Style with Convenient Online Shopping" />
+      <meta name="author" content="Elena Rieux" />
+      <meta name="keywords" content="online store, ecommerce website,">
+
 </head>
 
 <body>
   <?php
+  require_once("include/config_session.php");
+  require_once("models/Role.models.php");
+  require_once("models/User.models.php");
   require_once("navbar.php");
   ?>
   <div class="main">

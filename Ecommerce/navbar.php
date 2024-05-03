@@ -1,17 +1,11 @@
-<?php
-require_once("include/config_session.php");
-?>
+
 <nav>
   <div class="wrapper">
-    <a class="logo" href="index.php"
-      ><img src="img/logo.png" alt="Fake Store Logo"
-    /></a>
+    <a class="logo" href="index.php"><img src="img/logo.png" alt="Fake Store Logo" /></a>
     <input type="radio" name="slider" id="menu-btn" />
     <input type="radio" name="slider" id="close-btn" />
     <ul class="nav-links">
-      <label for="close-btn" class="btn close-btn"
-        ><i class="fas fa-times"></i
-      ></label>
+      <label for="close-btn" class="btn close-btn"><i class="fas fa-times"></i></label>
       <li><a href="#">Home</a></li>
       <li><a href="#">About</a></li>
       <li>
@@ -28,7 +22,7 @@ require_once("include/config_session.php");
               <ul class="mega-links">
                 <li><a href="#">T-shirt</a></li>
                 <li><a href="#">Pants</a></li>
-                <li><a href="#">jewlery</a></li>
+                <li><a href="#">Jewlery</a></li>
                 <li><a href="#">Shoes</a></li>
               </ul>
             </div>
@@ -71,18 +65,21 @@ require_once("include/config_session.php");
           <ul class="drop-menu">
             <li>
               <?php
-              if(isset ($_SESSION["logged_in"])){
-                echo '
-                <li>You are logged in as '. $_SESSION["user_username"].'</li>
+              if (isset($_SESSION["logged_in"])) {
+                $user = unserialize($_SESSION['user']);
+                $username = $user->getUsername();
+                echo '<li>You are logged in as ' . $username . '</li>';
+                ?>
+                <a href="dashboard/index.php">Profile</a>
                 <form action="include/logout.php" method="post">
-                <button>Log Out</button>
-              </form>';?>
-<?php
+                  <button>Log Out</button>
+                </form>
+              <?php
               } else {
                 echo '<li>Access your account</li> <button onclick="displayBarraLaterale()">Log in / Sign up</button>';
               }
               ?>
-              
+
             </li>
           </ul>
         </li>
@@ -94,29 +91,24 @@ require_once("include/config_session.php");
         </li>
       </ul>
     </span>
-    <label for="menu-btn" class="btn menu-btn"
-      ><i class="fas fa-bars"></i
-    ></label>
+    <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
   </div>
 </nav>
 <div class="form-laterale sign-in-container">
-  <form action="include/login_check.php" method="post">
+  <form id="login-form2" method="post">
     <i class="fas fa-times" onclick="closeBarraLaterale()"></i>
     <h2>Log in</h2>
     <div class="social-container">
       <a href="#" class="social-nav fb"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social-nav google"
-        ><i class="fab fa-google-plus-g"></i
-      ></a>
-      <a href="#" class="social-nav linkedin"
-        ><i class="fab fa-linkedin-in"></i
-      ></a>
+      <a href="#" class="social-nav google"><i class="fab fa-google-plus-g"></i></a>
+      <a href="#" class="social-nav linkedin"><i class="fab fa-linkedin-in"></i></a>
     </div>
     <span>or use your account</span>
     <input name="email" type="email" placeholder="Email" />
     <input name="password" type="password" placeholder="Password" />
+    <p id="risultatoLogin2"></p>
     <a href="#">Forgot your password?</a>
-    <button>Log In</button>
+    <button type="submit">Log In</button>
   </form>
   <hr />
   <div class="no-account">
@@ -124,3 +116,27 @@ require_once("include/config_session.php");
     <a href="login.php"><button>Sign up</button></a>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document
+      .getElementById("login-form2")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        fetch("include/login_check.php", {
+            method: "POST",
+            body: new FormData(event.target),
+          })
+          .then((response) => response.text())
+          .then((data) => {
+            if (data === "success") {
+              window.location.href = "dashboard/index.php";
+            } else {
+              document.getElementById("risultatoLogin2").innerText = data;
+            }
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+  });
+</script>
