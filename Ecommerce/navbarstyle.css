@@ -149,6 +149,14 @@ nav .wrapper {
   font-size: 20px;
 }
 
+.wrapper li span {
+  background-color: #d6a230;
+  padding: 6px 7px;
+  border-radius: 50%;
+  margin-left: -22px;
+  font-size: 10px;
+}
+
 @media screen and (max-width: 970px) {
   .wrapper .btn {
     display: block;

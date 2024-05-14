@@ -8,8 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="../img/favicon.png" />
 
-    <title>Fake Fashion personal profile</title>
+
+    <title>Fake Fashion Users</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +23,9 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 </head>
 
 <?php
@@ -30,7 +35,7 @@ require_once("../models/User.models.php");
 
 $role = unserialize($_SESSION['user']);
 
-if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin") {
+if (isset($_SESSION["logged_in"]) && $role->isAdmin()) {
 ?>
 
     <body id="page-top">
@@ -60,14 +65,12 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                        <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                            For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                        <h1 class="h3 mb-2 text-gray-800">User Management</h1>
+                        
                         <!-- DataTales Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Fake Fashion's Users</h6>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -77,7 +80,6 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Ruolo</th>
-                                                <th> </th>
                                                 <th> </th>
                                                 <th>
                                                     <button href="#" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#newUserModal">
@@ -94,13 +96,16 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
 
                                             $user = unserialize($_SESSION['user']);
                                             $users = $user->getUsers();
+                                            $currentUser = $user->getEmail();
 
 
                                             foreach ($users as $user) {
-                                                echo "<tr>";
-                                                echo "<td>" . $user['username'] . "</td>";
-                                                echo "<td>" . $user['email'] . "</td>";
-                                                echo "<td>" . $user['ruolo'] . "</td>";
+                                             if ($user['email'] != $currentUser) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . $user['username'] . "</td>";
+                                                    echo "<td>" . $user['email'] . "</td>";
+                                                    echo "<td>" . $user['ruolo'] . "</td>";
+                                                
                                             ?>
                                                 <td>
                                                     <button class="btn btn-danger btn-icon-split delete-button" data-toggle="modal" data-target="#deleteModal">
@@ -116,19 +121,10 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                                                             <i class="fa fa-address-book" aria-hidden="true"></i>
                                                         </span>
                                                         <span class="text">Edit</span>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="#" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-info-circle"></i>
-                                                        </span>
-                                                        <span class="text">View</span>
-                                                    </a>
-                                                </td>
-                                                </tr>
-                                            <?php }
-                                            ?>
+                                                        </a>
+                                                        </tr>
+                                                    <?php } }
+                                                    ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -172,10 +168,12 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-body">Select "Log out" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <form action="../include/logout.php" method="post">
+                            <button class="btn btn-primary">Log out</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -243,7 +241,7 @@ if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin")
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input name="password" type="password" class="form-control" id="password" placeholder="insert password">
+                            <input name="password" type="password" class="form-control" id="editPassword" placeholder="insert password">
                         </div>
                         <div class="form-group">
                             <label for="passwordRepeat">Repeat password</label>

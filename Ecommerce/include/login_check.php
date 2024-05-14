@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         $ruolo = new Role($result["ruolo"]);
-        $user = new User($result["username"], $email, $ruolo);
+        $user = new User($result["username"], $email, $ruolo, $result["IDutente"]);
 
   
         $_SESSION['user'] = serialize($user); 

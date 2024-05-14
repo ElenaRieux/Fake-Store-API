@@ -64,7 +64,7 @@ class addUserContr extends User
         return $result;
     }
 
-    private function checkEmail($email)
+    public function checkEmail($email)
     {
         $stmt = $this->connect()->prepare("SELECT email FROM utente WHERE email = ?;");
 

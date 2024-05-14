@@ -8,21 +8,34 @@ $(document).ready(function () {
 
   $(".delete-user").click(function () {
     fetch("php/deleteUser.php", {
-      method: "POST",
-      body: JSON.stringify({ email: email }),
-      headers: {
-        "Content-Type": "application/json",
-      },
+        method: "POST",
+        body: JSON.stringify({ email: email }),
+        headers: {
+            "Content-Type": "application/json",
+        },
     })
-      .then((response) => response.text())
-      .then((data) => {
-        location.reload();
-      })
-      .catch((error) => {
+    .then((response) => response.text())
+    .then((data) => {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Deleted successfully",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            location.reload();
+        });
+    })
+    .catch((error) => {
         console.error("Error:", error);
-        console.log("An error occurred. Please try again later.");
-      });
-  });
+        Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error occurred",
+            text: "An error occurred. Please try again later.",
+        });
+    });
+});
 
   document
     .getElementById("formNewUser")
@@ -35,7 +48,15 @@ $(document).ready(function () {
         .then((response) => response.text())
         .then((data) => {
           if (data == "success") {
-            location.reload();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "You added a new user",
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              location.reload();
+            });
           } else {
             document.getElementById("risultatoAddUser").innerText = data;
           }
@@ -57,4 +78,5 @@ $(document).ready(function () {
     
         setEditFormData(username, email, role);
     });
-});
+
+})

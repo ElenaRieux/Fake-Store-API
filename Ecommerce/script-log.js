@@ -76,36 +76,36 @@ const setSuccess = (element) => {
 
 };
 
-const validateInputs = () => {
-  const signupUsernameValue = signupUsername.value.trim();
-  const signupEmailValue = signupEmail.value.trim();
-  const signupPasswordValue = signupPassword.value.trim();
-  const signupPasswordRepeatValue = signupPasswordRepeat.value.trim();
-  if (signupUsernameValue === "") {
-    setError(signupUsername, "Username is required");
+// const validateInputs = () => {
+//   const signupUsernameValue = signupUsername.value.trim();
+//   const signupEmailValue = signupEmail.value.trim();
+//   const signupPasswordValue = signupPassword.value.trim();
+//   const signupPasswordRepeatValue = signupPasswordRepeat.value.trim();
+//   if (signupUsernameValue === "") {
+//     setError(signupUsername, "Username is required");
 
-  } else {
-    setSuccess(signupUsername);
-  }
+//   } else {
+//     setSuccess(signupUsername);
+//   }
 
-  if (signupEmailValue === "") {
-    setError(signupEmail, "Email is required");
-  } else {
-    setSuccess(signupEmail);
-  }
+//   if (signupEmailValue === "") {
+//     setError(signupEmail, "Email is required");
+//   } else {
+//     setSuccess(signupEmail);
+//   }
 
-  if (signupPasswordValue === "") {
-    setError(signupPassword, "Password is required");
-  } else {
-    setSuccess(signupPassword);
-  }
+//   if (signupPasswordValue === "") {
+//     setError(signupPassword, "Password is required");
+//   } else {
+//     setSuccess(signupPassword);
+//   }
 
-  if (signupPasswordRepeatValue === "") {
-    setError(signupPasswordRepeat, "Password is required");
-  } else {
-    setSuccess(signupPasswordRepeat);
-  }
-};
+//   if (signupPasswordRepeatValue === "") {
+//     setError(signupPasswordRepeat, "Password is required");
+//   } else {
+//     setSuccess(signupPasswordRepeat);
+//   }
+// };
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("signup-form")
     .addEventListener("submit", function (event) {
       event.preventDefault();
-      validateInputs();
+      // validateInputs();
       fetch("include/signup_check.php", {
         method: "POST",
         body: new FormData(event.target),

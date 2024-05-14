@@ -31,7 +31,7 @@
               <ul class="mega-links">
                 <li><a href="#">T-shirt</a></li>
                 <li><a href="#">Pants</a></li>
-                <li><a href="#">jewlery</a></li>
+                <li><a href="#">Jewlery</a></li>
                 <li><a href="#">Shoes</a></li>
               </ul>
             </div>
@@ -75,9 +75,10 @@
                   <button>Log Out</button>
                 </form>
               <?php
-              } else {
-                echo '<li>Access your account</li> <button onclick="displayBarraLaterale()">Log in / Sign up</button>';
-              }
+              } else { ?>
+                <li>Access your account</li> 
+                <button onclick="displayBarraLaterale()">Log in / Sign up</button>
+              <?php }
               ?>
 
             </li>
@@ -87,7 +88,14 @@
           <a href="#"><i class="bi bi-bookmark"></i></a>
         </li>
         <li>
-          <a href="#"><i class="bi bi-cart3"></i></a>
+          <a href="cart.php"><i class="bi bi-cart3"></i></a>
+          <span id="cartNum">
+            <?php
+             if (isset($_SESSION["logged_in"])) {
+           echo $user->getCartNum();
+             } else echo "0";
+          ?>
+          </span>
         </li>
       </ul>
     </span>

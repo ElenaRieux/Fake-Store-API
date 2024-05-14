@@ -10,7 +10,7 @@ require_once "include/config_session.php";
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Log-in and Sign-up on Fake Fashion</title>
-  <link rel="icon" href="/img/favicon.png" />
+  <link rel="icon" href="img/favicon.png" />
   <link rel="stylesheet" href="navbarstyle.css">
   <link rel="stylesheet" href="style-log.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -79,6 +79,7 @@ require_once "include/config_session.php";
   <?php
   require_once("footer.html");
   ?>
+  
   <script src="script-log.js"></script>
 </body>
 

@@ -16,7 +16,7 @@ button {
 
 nav {
   position: fixed;
-  z-index: 99;
+  z-index: 97;
   width: 100%;
 
   background: #242526;
@@ -158,6 +158,14 @@ nav .wrapper {
 
 .section i {
   font-size: 20px;
+}
+
+.wrapper li span {
+  background-color: #d6a230;
+  padding: 4px 8px;
+  border-radius: 50%;
+  margin-left: -22px;
+  font-size: 10px;
 }
 
 @media screen and (max-width: 970px) {
@@ -340,7 +348,7 @@ form .fas{
   position: fixed;
   top: 0;
   right: -500px;
-  z-index: 99;
+  z-index: 98;
 visibility: hidden;
 display: none;
 transition: all 0.3s ease;}
@@ -537,10 +545,10 @@ article .all-products {
 }
 
 .prodotti {
-  width: 300px;
-  height: 350px;
-  padding: 10px 10px;
-  margin: 30px 20px;
+  width: 310px;
+  height: 420px;
+  padding: 15px 10px;
+  margin: 40px 20px;
   box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
   transition: all 0.3s ease;
 }
@@ -586,6 +594,18 @@ article .all-products {
 .compra button:hover,
 .container-form form button:hover {
   background-color: #0c0c0c;
+}
+
+
+input.count{
+  max-width: 100px;
+  text-align: center;
+  padding: 2px 10px;
+  display: none;
+}
+
+input.count.adding{
+  display: inline;
 }
 
 /*Banner*/
@@ -717,8 +737,8 @@ article .all-products {
 
   .prodotti {
     width: 250px;
-    height: 350px;
-    margin: 10px;
+    min-height: 330px;
+    margin: 30px;
   }
 }
 
@@ -826,6 +846,37 @@ footer {
 
 .social i {
   margin-right: 50px;
+}
+
+.confirm {
+  display: none;
+  position: fixed;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #df9f16;
+  padding: 10px 20px;
+  border-radius: 5px;
+  animation-duration: 1s;
+  z-index: 99;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 @media (max-width: 1100px) {

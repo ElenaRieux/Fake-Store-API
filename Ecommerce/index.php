@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,8 @@
   <title>Fake Store | Get Now Tech, Jewelry and Clothings</title>
   <meta name="description" content="Explore Trendy Clothes for women and men, Stunning Jewelry, and Cutting-Edge Tech Gadgets.
       Elevate Your Style with Convenient Online Shopping" />
-      <meta name="author" content="Elena Rieux" />
-      <meta name="keywords" content="online store, ecommerce website,">
+  <meta name="author" content="Elena Rieux" />
+  <meta name="keywords" content="online store, ecommerce website,">
 
 </head>
 
@@ -21,6 +22,7 @@
   require_once("models/Role.models.php");
   require_once("models/User.models.php");
   require_once("navbar.php");
+  
   ?>
   <div class="main">
     <h1>NEW COLLECTION</h1>
@@ -101,11 +103,15 @@
     </form>
   </section>
 
+  <div class="confirm">
+    <p></p>
+  </div>
+
   <?php
   require_once("footer.html");
   ?>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

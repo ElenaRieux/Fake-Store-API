@@ -13,7 +13,7 @@ function get_email(object $connessioneDB,string $email){
 }
 
 function get_data(object $connessioneDB, string $email){     
-    $sql = "SELECT username, email, ruolo FROM utente WHERE email = :email";
+    $sql = "SELECT username, email, ruolo, IDutente FROM utente WHERE email = :email";
     $stmt = $connessioneDB->prepare($sql);
     $stmt->bindParam(":email", $email);
     $stmt->execute();

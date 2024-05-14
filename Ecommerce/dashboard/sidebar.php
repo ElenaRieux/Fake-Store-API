@@ -12,7 +12,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item">
         <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -25,6 +25,12 @@
     <div class="sidebar-heading">
         Interface
     </div>
+
+    <li class="nav-item">
+        <a class="nav-link" href="personal-profile.php">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
+    </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
@@ -96,13 +102,13 @@
     <?php
     $role = unserialize($_SESSION['user']);
 
-    if (isset($_SESSION["logged_in"]) && $role->getRole()->getRoleName() == "admin") {
+    if (isset($_SESSION["logged_in"]) && $role->isAdmin()) {
     ?>
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="tables.php">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+                <span>User Management</span></a>
         </li>
     <?php
     }
